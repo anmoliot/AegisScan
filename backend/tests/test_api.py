@@ -24,14 +24,19 @@ def test_auth_and_protected_plugin_catalog():
 
 def test_deployed_frontend_cors_preflight_is_allowed():
     with TestClient(app) as client:
-        response = client.options("/api/v1/auth/login", headers={
-            "Origin": "https://adaptivescan-mocha.vercel.app",
-            "Access-Control-Request-Method": "POST",
-            "Access-Control-Request-Headers": "content-type",
-        })
-        assert response.status_code == 200, response.text
-        assert response.headers["access-control-allow-origin"] == "https://adaptivescan-mocha.vercel.app"
-        assert response.headers["access-control-allow-credentials"] == "true"
+        for origin in (
+            "https://adaptivescan-mocha.vercel.app",
+            "https://adaptivescan-jz67t5kn9-anmoliots-projects.vercel.app",
+            "https://adaptivescan-feature-login-anmoliots-projects.vercel.app",
+        ):
+            response = client.options("/api/v1/auth/login", headers={
+                "Origin": origin,
+                "Access-Control-Request-Method": "POST",
+                "Access-Control-Request-Headers": "content-type",
+            })
+            assert response.status_code == 200, response.text
+            assert response.headers["access-control-allow-origin"] == origin
+            assert response.headers["access-control-allow-credentials"] == "true"
 
 
 def test_scan_creation_is_authorized_and_queued(monkeypatch):

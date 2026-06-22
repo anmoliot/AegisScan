@@ -12,7 +12,14 @@ class Settings(BaseSettings):
     app_name: str = "AegisScan"
     database_url: str = "sqlite+aiosqlite:///./aegisscan.db"
     secret_key: str = "development-only-change-this-secret-key"
-    frontend_origins: str = "http://localhost:5173,https://adaptivescan-mocha.vercel.app"
+    frontend_origins: str = (
+        "http://localhost:5173,"
+        "https://adaptivescan-mocha.vercel.app,"
+        "https://adaptivescan-jz67t5kn9-anmoliots-projects.vercel.app"
+    )
+    frontend_origin_regex: str | None = (
+        r"https://(adaptivescan-mocha|adaptivescan-[a-z0-9-]+-anmoliots-projects)\.vercel\.app"
+    )
     registration_enabled: bool = True
     default_admin_enabled: bool = True
     default_admin_email: str = "admin@test.com"
@@ -43,8 +50,8 @@ class Settings(BaseSettings):
                 raise ValueError("SECRET_KEY must be a strong value of at least 48 characters")
             if not self.database_url.startswith(("postgresql+asyncpg://", "postgresql://")):
                 raise ValueError("Production requires PostgreSQL")
-            if not self.origins or "*" in self.origins:
-                raise ValueError("Production FRONTEND_ORIGINS must be explicit")
+            if (not self.origins and not self.frontend_origin_regex) or "*" in self.origins:
+                raise ValueError("Production FRONTEND_ORIGINS or FRONTEND_ORIGIN_REGEX must be explicit")
             if not self.cookie_secure:
                 raise ValueError("Production cookies must be secure")
             if self.default_admin_enabled:

@@ -38,8 +38,9 @@ async def lifespan(_: FastAPI):
 app = FastAPI(title=settings.app_name, version="1.0.0", lifespan=lifespan,
               docs_url="/docs" if settings.docs_enabled else None,
               redoc_url=None, openapi_url="/openapi.json" if settings.docs_enabled else None)
-app.add_middleware(CORSMiddleware, allow_origins=settings.origins, allow_credentials=True,
-                   allow_methods=["GET", "POST", "OPTIONS"], allow_headers=["Authorization", "Content-Type"])
+app.add_middleware(CORSMiddleware, allow_origins=settings.origins, allow_origin_regex=settings.frontend_origin_regex,
+                   allow_credentials=True, allow_methods=["GET", "POST", "OPTIONS"],
+                   allow_headers=["Authorization", "Content-Type"])
 app.add_middleware(RateLimitMiddleware)
 
 
