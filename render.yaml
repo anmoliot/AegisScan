@@ -14,7 +14,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: FRONTEND_ORIGINS
-        sync: false
+        value: https://adaptivescan-mocha.vercel.app
       - key: COOKIE_SECURE
         value: true
       - key: COOKIE_SAMESITE

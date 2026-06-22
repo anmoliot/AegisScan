@@ -27,7 +27,10 @@ async def validate_target(raw_url: str) -> ValidatedTarget:
         raise TargetRejected("Only absolute HTTP and HTTPS URLs are allowed")
     if parsed.username or parsed.password:
         raise TargetRejected("Credentials in target URLs are not allowed")
-    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    try:
+        port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    except ValueError as exc:
+        raise TargetRejected("Target URL port is invalid") from exc
     if port not in {80, 443}:
         raise TargetRejected("Only ports 80 and 443 are allowed")
     host = parsed.hostname.rstrip(".").lower()

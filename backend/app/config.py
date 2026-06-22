@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     app_name: str = "AegisScan"
     database_url: str = "sqlite+aiosqlite:///./aegisscan.db"
     secret_key: str = "development-only-change-this-secret-key"
-    frontend_origins: str = "http://localhost:5173"
+    frontend_origins: str = "http://localhost:5173,https://adaptivescan-mocha.vercel.app"
     registration_enabled: bool = True
     default_admin_enabled: bool = True
     default_admin_email: str = "admin@test.com"
