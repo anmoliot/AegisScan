@@ -25,6 +25,7 @@ def test_auth_and_protected_plugin_catalog():
 def test_deployed_frontend_cors_preflight_is_allowed():
     with TestClient(app) as client:
         for origin in (
+            "https://aegis-scan-seven.vercel.app",
             "https://aegis-scan-inky.vercel.app",
             "https://aegis-scan-git-main-anmoliots-projects.vercel.app",
             "https://adaptivescan-mocha.vercel.app",

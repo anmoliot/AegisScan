@@ -14,9 +14,9 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: FRONTEND_ORIGINS
-        value: https://aegis-scan-inky.vercel.app,https://adaptivescan-mocha.vercel.app,https://adaptivescan-jz67t5kn9-anmoliots-projects.vercel.app
+        value: https://aegis-scan-seven.vercel.app,https://aegis-scan-inky.vercel.app,https://adaptivescan-mocha.vercel.app
       - key: FRONTEND_ORIGIN_REGEX
-        value: https://((aegis-scan|adaptivescan)-[a-z0-9-]+-anmoliots-projects|aegis-scan-inky|adaptivescan-mocha)\.vercel\.app
+        value: https://(aegis-scan|adaptivescan)-[a-z0-9-]+\.vercel\.app
       - key: COOKIE_SECURE
         value: true
       - key: COOKIE_SAMESITE
