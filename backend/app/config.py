@@ -14,11 +14,12 @@ class Settings(BaseSettings):
     secret_key: str = "development-only-change-this-secret-key"
     frontend_origins: str = (
         "http://localhost:5173,"
+        "https://aegis-scan-inky.vercel.app,"
         "https://adaptivescan-mocha.vercel.app,"
         "https://adaptivescan-jz67t5kn9-anmoliots-projects.vercel.app"
     )
     frontend_origin_regex: str | None = (
-        r"https://(adaptivescan-mocha|adaptivescan-[a-z0-9-]+-anmoliots-projects)\.vercel\.app"
+        r"https://((aegis-scan|adaptivescan)-[a-z0-9-]+-anmoliots-projects|aegis-scan-inky|adaptivescan-mocha)\.vercel\.app"
     )
     registration_enabled: bool = True
     default_admin_enabled: bool = True
