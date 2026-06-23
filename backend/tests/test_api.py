@@ -17,7 +17,7 @@ def test_auth_and_protected_plugin_catalog():
         assert client.get("/api/v1/auth/me", headers=headers).status_code == 200
         plugins = client.get("/api/v1/scans/plugins", headers=headers)
         assert plugins.status_code == 200
-        assert len(plugins.json()) == 6
+        assert len(plugins.json()) == 8
         refreshed = client.post("/api/v1/auth/refresh")
         assert refreshed.status_code == 200, refreshed.text
 

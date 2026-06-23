@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     scan_concurrency: int = 2
     scan_user_agent: str = "AegisScan/1.0 (authorized-security-assessment)"
 
+    metrics_enabled: bool = True
+    log_format: Literal["json", "text"] = "json"
+
     @property
     def origins(self) -> list[str]:
         return [value.strip().rstrip("/") for value in self.frontend_origins.split(",") if value.strip()]

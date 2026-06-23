@@ -17,8 +17,11 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements-dev.txt
+      - run: ruff check .
       - run: alembic upgrade head
-      - run: pytest -q tests
+      - run: alembic downgrade base
+      - run: alembic upgrade head
+      - run: pytest -q tests --cov=app --cov-fail-under=70
   frontend:
     runs-on: ubuntu-latest
     defaults:

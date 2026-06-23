@@ -38,3 +38,25 @@ export async function downloadReport(scanId) {
   link.click()
   URL.revokeObjectURL(link.href)
 }
+
+// ASM API functions
+export async function getAssets() { return api('/asm/assets') }
+export async function createAsset(domain) { return api('/asm/assets', { method: 'POST', body: JSON.stringify({ domain }) }) }
+export async function discoverAsset(id) { return api(`/asm/assets/${id}/discover`, { method: 'POST' }) }
+export async function getSubdomains(id) { return api(`/asm/assets/${id}/subdomains`) }
+export async function getCertificates(id) { return api(`/asm/assets/${id}/certificates`) }
+
+// Monitoring API functions
+export async function getSchedules() { return api('/monitoring/schedules') }
+export async function createSchedule(assetId, frequency) { return api('/monitoring/schedules', { method: 'POST', body: JSON.stringify({ asset_id: assetId, frequency }) }) }
+export async function getAlerts() { return api('/monitoring/alerts') }
+export async function acknowledgeAlert(id) { return api(`/monitoring/alerts/${id}/acknowledge`, { method: 'PATCH' }) }
+
+// Graph API functions
+export async function getGraph(id) { return api(`/graph/assets/${id}`) }
+export async function getAttackPaths(id) { return api(`/graph/attack-paths/${id}`) }
+
+// Risk API functions
+export async function getRiskDashboard() { return api('/risk/dashboard') }
+export async function getRiskScore(id) { return api(`/risk/score/${id}`) }
+
