@@ -4,7 +4,7 @@ import {
   getAssets, createAsset, discoverAsset, getSubdomains, getCertificates,
   getSchedules, createSchedule, getAlerts, acknowledgeAlert,
   getGraph, getAttackPaths,
-  getRiskDashboard, getRiskScore
+  getRiskDashboard
 } from './api'
 import './App.css'
 
@@ -322,6 +322,7 @@ function AssetsPage() {
     }
   }, [])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { loadAssets() }, [loadAssets])
 
   async function register(e) {
@@ -462,6 +463,7 @@ function MonitoringPage() {
     }
   }, [assetId])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { loadData() }, [loadData])
 
   async function create(e) {
@@ -712,6 +714,7 @@ function RiskPage() {
     }
   }, [selectedAssetId])
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { loadData() }, [loadData])
 
   async function fetchSummary() {
