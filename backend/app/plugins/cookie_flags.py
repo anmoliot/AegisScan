@@ -19,9 +19,12 @@ class CookieFlagsPlugin(BasePlugin):
                 continue
             for name, morsel in cookie.items():
                 missing = []
-                if not morsel["httponly"]: missing.append("HttpOnly")
-                if response.url.startswith("https://") and not morsel["secure"]: missing.append("Secure")
-                if not morsel["samesite"]: missing.append("SameSite")
+                if not morsel["httponly"]:
+                    missing.append("HttpOnly")
+                if response.url.startswith("https://") and not morsel["secure"]:
+                    missing.append("Secure")
+                if not morsel["samesite"]:
+                    missing.append("SameSite")
                 if missing:
                     findings.append(PluginResult(self.name, f"Cookie {name} lacks security flags",
                         "A response cookie is missing one or more defensive attributes.", Severity.medium,

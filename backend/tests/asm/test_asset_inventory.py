@@ -1,7 +1,6 @@
 from unittest.mock import AsyncMock
 import pytest
 from app.asm.asset_inventory import AssetInventoryManager
-from app.asm.models import Asset
 from app.asm.exposure_scoring import ExposureScoringCalculator
 from app.asm.drift_detection import DriftDetector
 

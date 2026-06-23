@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import patch, AsyncMock, MagicMock
 from app.ai.rule_engine import RuleBasedRiskEngine
-from app.ai.provider import get_provider, GeminiProvider
+from app.ai.provider import GeminiProvider
 
 def test_rule_based_risk_engine_similarity():
     # Identical strings

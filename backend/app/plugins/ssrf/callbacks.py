@@ -1,5 +1,3 @@
-import re
-from typing import Any
 from app.plugins.base import Confidence, Severity
 
 class CallbackValidator:

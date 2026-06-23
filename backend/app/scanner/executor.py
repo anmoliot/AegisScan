@@ -2,7 +2,7 @@ import asyncio
 import logging
 from datetime import datetime, timezone
 
-from sqlalchemy import delete, select
+from sqlalchemy import delete
 
 from app.db.session import SessionLocal
 from app.plugins.registry import selected_plugins
@@ -38,7 +38,7 @@ class ScanExecutor:
                     for plugin in selected_plugins(scan.enabled_plugins):
                         try:
                             results.extend(await plugin.run(scan.target_url, client))
-                        except Exception as exc:
+                        except Exception:
                             log.warning("plugin_failed", extra={"plugin": plugin.name, "scan_id": scan.id})
                             errors.append(plugin.name)
                     await session.execute(delete(Finding).where(Finding.scan_id == scan.id))

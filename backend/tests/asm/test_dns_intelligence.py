@@ -1,5 +1,5 @@
 import pytest
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from app.asm.dns_intelligence import DnsIntelligenceCollector
 from app.asm.certificate_monitor import CertificateMonitor
 

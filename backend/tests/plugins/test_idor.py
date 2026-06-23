@@ -3,10 +3,9 @@
 import httpx
 import pytest
 
-from app.plugins.base import Confidence, Severity
+from app.plugins.base import Severity
 from app.plugins.idor.detector import IdorBolaPlugin
 from app.plugins.idor.strategies import (
-    IdentifiedParam,
     IdentifierMutator,
     IdentifierType,
     PathIdentifierStrategy,

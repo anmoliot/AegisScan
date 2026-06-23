@@ -1,4 +1,3 @@
-import json
 from fastapi import APIRouter, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
@@ -11,7 +10,6 @@ from app.api_security.models import ApiInventory, ApiEndpoint
 from app.api_security.schemas import ApiDiscoveryRequest, ApiInventoryResponse, ApiDiscoveryResponse
 from app.api_security.schema_discovery import SchemaDiscovery
 from app.api_security.openapi_parser import OpenApiParser
-from app.api_security.graphql_analyzer import GraphQLAnalyzer
 
 router = APIRouter(prefix="/api-security", tags=["api-security"])
 
@@ -68,7 +66,6 @@ async def discover_api(payload: ApiDiscoveryRequest, user: CurrentUser, session:
                 parsed_endpoints.append(ep)
         elif inventory.api_type == "GraphQL":
             # Default fallback schema for discovered GraphQL endpoint
-            analyzer = GraphQLAnalyzer()
             ep = ApiEndpoint(
                 inventory_id=inventory.id,
                 method="POST",

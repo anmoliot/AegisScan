@@ -1,7 +1,4 @@
-import json
 import httpx
-from typing import Any
-from app.scanner.http_client import SafeHttpClient
 
 class SubdomainDiscovery:
     """

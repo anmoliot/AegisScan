@@ -1,4 +1,4 @@
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, MagicMock
 import pytest
 from app.graph.graph_builder import GraphBuilder
 from app.graph.models import GraphNode, GraphEdge

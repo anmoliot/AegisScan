@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 import os
 import httpx
-from typing import Optional
-from app.config import get_settings
 
 class AiProvider(ABC):
     """
@@ -76,7 +74,6 @@ def get_provider() -> AiProvider:
     """
     Factory function to retrieve configured AI provider.
     """
-    settings = get_settings()
     # Try fetching GEMINI_API_KEY from environment or settings
     api_key = os.getenv("GEMINI_API_KEY")
     if api_key:

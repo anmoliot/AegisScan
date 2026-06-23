@@ -21,7 +21,8 @@ class RateLimitMiddleware(BaseHTTPMiddleware):
             key = (request.client.host if request.client else "unknown", request.url.path)
             bucket = self.buckets[key]
             now = time.monotonic()
-            while bucket and bucket[0] <= now - window: bucket.popleft()
+            while bucket and bucket[0] <= now - window:
+                bucket.popleft()
             if len(bucket) >= limit:
                 return JSONResponse({"detail": "Rate limit exceeded"}, 429, {"Retry-After": str(window)})
             bucket.append(now)

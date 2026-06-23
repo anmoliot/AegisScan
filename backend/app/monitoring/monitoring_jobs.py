@@ -1,13 +1,11 @@
-import asyncio
 from datetime import datetime
 from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
 from app.db.session import SessionLocal
-from app.asm.models import Asset, Subdomain
+from app.asm.models import Asset
 from app.asm.subdomain_discovery import SubdomainDiscovery
 from app.monitoring.models import MonitorSchedule, Alert
-from app.monitoring.alert_engine import AlertEngine
 from app.monitoring.drift_monitor import DriftMonitor
 from app.monitoring.notification_engine import NotificationEngine
 

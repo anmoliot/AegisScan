@@ -3,7 +3,7 @@ from typing import Any
 from sqlalchemy import Float, ForeignKey, JSON, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db.base import Base, TimestampMixin
+from app.db.base import Base
 
 class GraphNode(Base):
     __tablename__ = "graph_nodes"

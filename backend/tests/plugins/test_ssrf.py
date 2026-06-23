@@ -3,7 +3,7 @@ import pytest
 
 from app.plugins.base import Confidence, Severity
 from app.plugins.ssrf.detector import SsrfPlugin
-from app.plugins.ssrf.callbacks import SsrfScorer, MetadataProbeSet
+from app.plugins.ssrf.callbacks import SsrfScorer
 from app.scanner.http_client import ScanResponse
 
 

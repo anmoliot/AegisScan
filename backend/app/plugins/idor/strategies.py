@@ -5,10 +5,8 @@ Supports query parameters, URL path segments, and custom headers.
 """
 
 import re
-import uuid as uuid_mod
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any
 from urllib.parse import parse_qsl, urlsplit
 
 

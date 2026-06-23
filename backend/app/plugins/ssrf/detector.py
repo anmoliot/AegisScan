@@ -1,5 +1,4 @@
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
-import httpx
 
 from app.plugins.base import BasePlugin, Confidence, PluginResult, Severity
 from app.plugins.ssrf.callbacks import MetadataProbeSet, SsrfScorer

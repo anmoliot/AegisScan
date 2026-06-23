@@ -12,7 +12,8 @@ class TechnologyPlugin(BasePlugin):
         response = await client.get(target_url)
         signals = []
         for header in ("server", "x-powered-by"):
-            if value := response.headers.get(header): signals.append(f"{header}: {value[:120]}")
+            if value := response.headers.get(header):
+                signals.append(f"{header}: {value[:120]}")
         patterns = {"WordPress": r"wp-content|wp-includes", "React": r"data-reactroot|__NEXT_DATA__",
                     "Drupal": r"Drupal.settings|drupalSettings"}
         signals.extend(name for name, pattern in patterns.items() if re.search(pattern, response.text, re.I))

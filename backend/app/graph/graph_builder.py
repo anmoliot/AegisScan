@@ -1,8 +1,7 @@
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
-from app.asm.models import Asset, Subdomain, Service, Technology
-from app.api_security.models import ApiInventory, ApiEndpoint
+from app.asm.models import Asset, Subdomain, Service
 from app.scans.models import Finding
 from app.graph.models import GraphNode, GraphEdge
 
